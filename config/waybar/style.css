@@ -1,0 +1,325 @@
+* {
+
+    font-size: 14px;
+    font-family: "Fira Sans Semibold", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Bar */
+window {
+
+    color: #fff;
+    border-radius: 0px;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition-duration: 0.5s;
+    transition-property: background-color;
+}
+
+/* Workspaces */
+#workspaces {
+
+    padding: 0px 10px;
+    border-radius: 50px;
+}
+
+#workspaces button {
+
+    color: rgba(255, 255, 255, 0.5);
+    margin: 5px 2px;
+    padding: 0px 2px;
+    border-radius: 50px;
+    background: none;
+    border: none;
+    transition: 0s;
+}
+
+#workspaces button.active {
+
+    color: #aff; }
+
+#workspaces button:hover {
+
+    color: #aff;
+    background: none;
+    border: none;
+}
+
+#workspaces button.urgent {
+
+    background-color: #faa;
+}
+
+/* Window */
+#window {
+
+    color: #fff;
+    opacity: 0.75;
+    border-radius: 50px;
+}
+
+/* Clock */
+#clock.1 {
+
+    color: #fff;
+    font-size: 25px;
+}
+
+#clock.2 {
+
+    padding: 0px 10px;
+}
+
+
+/* Storage */
+#custom-storage {
+
+    color: #fff;
+    padding: 0px 5px;
+}
+
+/* Weather */
+#custom-weather,
+#custom-weather.severe,
+#custom-weather.sunnyDay,
+#custom-weather.clearNight,
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight,
+#custom-weather.rainyDay,
+#custom-weather.rainyNight,
+#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyNight,
+#custom-weather.default {
+
+    color: #fff;
+    padding: 0px 5px;
+}
+
+#custom-weather.severe {
+    color: #eb937d;
+}
+
+#custom-weather.sunnyDay {
+    color: #c2ca76;
+}
+
+#custom-weather.clearNight {
+    color: #cad3f5;
+}
+
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight {
+    color: #c2ddda;
+}
+
+#custom-weather.rainyDay,
+#custom-weather.rainyNight {
+    color: #5aaca5;
+}
+
+#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyNight {
+    color: #d6e7e5;
+}
+
+#custom-weather.default {
+    color: #dbd9d8;
+}
+
+/* Memory */
+#memory { 
+    
+    color: #fff; 
+    padding: 0px 0px 0px 10px;
+}
+
+/* CPU */
+#cpu { color: #fff; }
+
+/* Sound */
+#wireplumber { color: #fff; }
+
+/* Network */
+#network {
+
+    color: #fff;
+    padding: 0px 15px;
+}
+
+#network.disconnected { color: #faa; }
+
+/* Tray */
+#tray {
+
+    color: #fff;
+    margin: 0px 0px 0px -2px;
+    padding: 0px 10px;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+#tray > .passive {
+    
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+
+    -gtk-icon-effect: highlight;
+    background-color: blue;
+}
+
+/* Bauh */
+#custom-bauh {
+
+    margin: 0px 10px 0px 0px;
+    padding: 0px 0px;
+}
+
+/* Power */
+#custom-power {
+
+    color: #fff;
+    margin: 0px 10px 0px 0px;
+    padding: 0px 0px;
+    font-size: 20px;
+}
+
+/* Screenshot
+#custom-screenshot_t {
+
+    margin: 0px -10px 0px 10px;
+    padding: 0px 5px;
+}*/
+
+
+
+
+
+
+#battery,
+#disk,
+#temperature,
+#backlight,
+#pulseaudio,
+#custom-media,
+#mode,
+#idle_inhibitor,
+#mpd,
+#bluetooth,
+#custom-hyprPicker,
+#custom-power-menu,
+#custom-spotify {
+    background-color: #111827;
+    border-radius: 14px;
+    padding: 6px;  /* Adjusted padding */
+}
+
+
+#custom-spotify {
+    background-color: #111827;
+    border-radius: 14px;
+    padding: 3px 12px;
+}
+
+
+#custom-launcher {
+    background-color: #1b242b;
+    color: #6a92d7;
+    border-radius: 7.5px;
+    padding: 3px 6px;  /* Adjusted padding */
+}
+
+#pulseaudio { color: #7d9bba; }
+#backlight { color: #8fbcbb; }
+
+#battery { color: #c0caf5; }
+#battery.charging,
+#battery.full,
+#battery.plugged { color: #26a65b; }
+#battery.critical:not(.charging) {
+    color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: rgba(30, 34, 42, 0.5);
+        color: #abb2bf;
+    }
+}
+
+
+
+label:focus {
+    background-color: #000000;
+}
+
+#disk {
+    background-color: #964b00;
+}
+
+#bluetooth {
+    color: #707d9d;
+}
+
+#bluetooth.disconnected {
+    color: #f53c3c;
+}
+
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}
+
+#temperature {
+    background-color: #f0932b;
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+}
+
+
+#idle_inhibitor {
+    background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+#language {
+    background: #00b093;
+    color: #740864;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state {
+    background: #97e1ad;
+    color: #000000;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 0px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
