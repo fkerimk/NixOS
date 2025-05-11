@@ -11,20 +11,9 @@
         ./fonts.nix
     ];
 
-    services = {
-
-        xserver = {
-
-            enable = true;
-            desktopManager.xfce.enable = true;
-        };
-
-        displayManager.sddm.enable = true;
-    };
+    services.displayManager.sddm.enable = true;
 
     environment.systemPackages = with pkgs; [
-
-        git
 
         killall
 
@@ -42,6 +31,9 @@
         btop
 
         bemoji
+
+        wl-clipboard
+        wtype
     ];
 
 }

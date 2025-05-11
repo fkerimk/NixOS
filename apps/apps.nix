@@ -21,6 +21,4 @@
         easyeffects
         qpwgraph
     ];
-
-    programs.git.enable = true;
 }

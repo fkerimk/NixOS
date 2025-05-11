@@ -32,8 +32,10 @@
         xserver = {
 
             enable = true;
+            
+            desktopManager.xfce.enable = true;
             windowManager.hypr.enable = true;
-        }
+        };
 
         pipewire = {
 
