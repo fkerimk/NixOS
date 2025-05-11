@@ -29,7 +29,11 @@
 
     services = {
 
-        xserver.windowManager.hypr.enable = true;
+        xserver = {
+
+            enable = true;
+            windowManager.hypr.enable = true;
+        }
 
         pipewire = {
 
