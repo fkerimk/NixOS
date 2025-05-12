@@ -33,7 +33,14 @@
 
             enable = true;
             
-            desktopManager.xfce.enable = true;
+            desktopManager = {
+
+                xfce.enable = true;
+                
+                gnome.enable = false;
+                plasma5.enable = false;
+            };
+
             windowManager.hypr.enable = true;
         };
 
@@ -55,24 +62,20 @@
     # Packages
     environment.systemPackages = with pkgs; [
 
-        # Polkit
-        hyprpolkitagent
-
-        # Notifications
-        mako
-        libnotify
-
-        # Wallpaper
-        mpvpaper
-
-        # Rofi
-        rofi-wayland
-
-        # Cursor
-        hyprcursor
-        rose-pine-hyprcursor
+        hyprpolkitagent      # Polkit
+        libnotify            # Notifications
+        mako                 # Notifications
+        mpvpaper             # Video wallpaper
+        rofi-wayland         # Rofi
+        hyprcursor           # Cursor
+        rose-pine-hyprcursor # Cursor theme
+        hyprpicker           # Color picker
+        hyprshot             # Screenshot
     ];
 
     # Sound
     security.rtkit.enable = true;
+
+    # Disable KDE polkit
+    systemd.user.services.polkit-kde-authentication-agent-1.enable = false;
 }

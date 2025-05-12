@@ -1,0 +1,40 @@
+# ▄▖▄▖▄▖▖▖▄▖▖▖▄▖
+# ▌▌▙▘▌ ▙▌▐ ▌▌▙▖
+# ▛▌▌▌▙▖▌▌▟▖▚▘▙▖
+
+# ▄▖▄▖▄ ▄▖
+# ▌ ▌▌▌▌▙▖
+# ▙▖▙▌▙▘▙▖
+
+application/x-code=$code
+
+# ▄▖▄▖▖ ▄ ▄▖▄▖
+# ▙▖▌▌▌ ▌▌▙▖▙▘
+# ▌ ▙▌▙▖▙▘▙▖▌▌
+
+# ▄▖▖  ▖▄▖▄▖▄▖
+# ▐ ▛▖▞▌▌▌▌ ▙▖
+# ▟▖▌▝ ▌▛▌▙▌▙▖
+
+# ▄▖▄▖▖▖▄▖
+# ▐ ▙▖▚▘▐
+# ▐ ▙▖▌▌▐
+
+# ▖▖▄▖▄ ▄▖▄▖
+# ▌▌▐ ▌▌▙▖▌▌
+# ▚▘▟▖▙▘▙▖▙▌
+
+# ▖  ▖▄▖▄
+# ▌▞▖▌▙▖▙▘
+# ▛ ▝▌▙▖▙▘
+
+# ▄▖▄▖▖▖▄▖▄▖
+# ▌▌▐ ▙▌▙▖▙▘
+# ▙▌▐ ▌▌▙▖▌▌
+
+x-scheme-handler/slack=slack.desktop
+x-scheme-handler/unity=unityhub.desktop
+x-scheme-handler/unityhub=unityhub.desktop
+x-scheme-handler/bitwarden=bitwarden.desktop
+x-scheme-handler/fdm=freedownloadmanager_fdm_up.desktop
+x-scheme-handler/geo=google-maps-geo-handler.desktop

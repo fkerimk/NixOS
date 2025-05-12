@@ -26,7 +26,7 @@ main_choice=$(main_menu | rofi -dmenu -p "Main" -i)
 
 case "$main_choice" in
 
-    "  TDK") nohup ~/.config/rofi/scripts/rofi-tdk/rofi-tdk.sh > /dev/null 2>&1 & ;;
+    "  TDK") nohup "$dir/tdk/tdk.sh" > /dev/null 2>&1 & ;;
     "󱓞  Run") nohup rofi -show drun -modi drun > /dev/null 2>&1 & ;;
     "󰧴  Nerd Fonts") nohup xdg-open "https://www.nerdfonts.com/cheat-sheet" > /dev/null 2>&1 & ;;
     "  Search") nohup fsearch > /dev/null 2>&1 & ;;

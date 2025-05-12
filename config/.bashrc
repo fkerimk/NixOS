@@ -1,4 +1,4 @@
-rebuild () {
+reload () {
 
-    /home/furkan/NixOS/rebuild.sh
+    /home/furkan/NixOS/reload.sh "$@"
 }

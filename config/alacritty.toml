@@ -1,0 +1,18 @@
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
+
+[window]
+decorations = "None"
+opacity = 0.5
+
+[font]
+builtin_box_drawing = true
+
+[colors]
+cursor = { text = "CellBackground", cursor = "CellForeground" }
+
+[colors.primary]
+foreground = "#d8d8d8"
+background = "#181818"
+dim_foreground = "#828482"
+bright_foreground = "None"

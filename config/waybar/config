@@ -30,8 +30,8 @@
         "memory",
         "cpu",
         "battery",
-        "wireplumber",
-        //"pulseaudio",
+        //"wireplumber",
+        "pulseaudio",
         "network",
         "tray"
     ],
