@@ -31,7 +31,9 @@
         nvidia = {
 
             open = false;
-            package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+            #package = pkgs.linuxPackages_xanmod.nvidiaPackages.stable;
+            
             modesetting.enable = true;
             nvidiaSettings = true;
 

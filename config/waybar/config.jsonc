@@ -1,0 +1,99 @@
+{
+    "output": "DP-3",
+
+    "height": 20,
+
+    "layer": "top",
+    "position": "top",
+
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+
+    "spacing": 0,
+        
+    "modules-left": [ 
+
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+
+    "modules-center": [
+
+        "clock#time"
+    ],
+
+    "modules-right": [
+
+        "clock#date",
+        "custom/storage",
+        "memory",
+        "cpu",
+        "pulseaudio",
+        "tray"
+    ],
+
+    "wlr/taskbar": {
+
+        "on-click": "activate"
+    },
+
+
+    "clock#time": {
+
+        "format": "{:%H:%M}",
+        "tooltip": false,
+        "on-click": "kalarm",
+
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "today-format": "<b>{}</b>"
+    },
+
+    "clock#date": {
+
+        "format": "  {:%d.%m}",
+        "tooltip": false,
+        "on-click": "korganizer"
+    },
+
+    "custom/storage": {
+        
+        "format": "󱛟 {}",
+        "return-type": "json",
+        
+        "on-click": "qdirstat",
+        "on-click-right": "partitionmanager",
+        
+        "exec": "~/.config/waybar/modules/storage.sh",
+        "interval": 1
+    },
+
+    "memory": {
+        
+        "interval": 30,
+        "format": "  {used:0.2f} GB",
+        "on-click": "alacritty -e btop"
+    },
+
+    "cpu": {
+
+        "interval": 1,
+        "format": "  {}%"
+    },
+
+    "pulseaudio": {
+        
+        "format": "  {volume}%",
+        "format-muted": " {volume}%",
+
+        "on-click": "pavucontrol",
+        "on-click-right": "amixer sset Master toggle"
+    },
+
+    "tray": {
+
+        "icon-size": 15,
+        "spacing": 5
+    }
+}

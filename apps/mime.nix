@@ -8,7 +8,7 @@ let
     # ▌▌▙▘▌ ▙▌▐ ▌▌▙▖
     # ▛▌▌▌▙▖▌▌▟▖▚▘▙▖
 
-    archive-app = "";
+    archive-app = "org.gnome.FileRoller.desktop";
 
     archive-types = [
         
@@ -82,18 +82,29 @@ let
     # ▐ ▛▖▞▌▌▌▌ ▙▖
     # ▟▖▌▝ ▌▛▌▙▌▙▖
 
-    image-app = "org.xfce.ristretto.desktop";
+    image-app = "com.github.weclaw1.ImageRoll.desktop";
 
     image-types = [
 
         "image/png"
     ];
 
+    # ▄▖▄▖▄▖▖  ▖▄▖▖ ▖▄▖▖ 
+    # ▐ ▙▖▙▘▛▖▞▌▐ ▛▖▌▌▌▌ 
+    # ▐ ▙▖▌▌▌▝ ▌▟▖▌▝▌▛▌▙▖
+
+    terminal-app = "alacritty.desktop";
+
+    terminal-types = [
+
+        "x-scheme-handler/terminal"
+    ];
+
     # ▄▖▄▖▖▖▄▖
     # ▐ ▙▖▚▘▐
     # ▐ ▙▖▌▌▐
 
-    text-app = "org.xfce.mousepad.desktop";
+    text-app = "textadept.desktop";
 
     text-types = [
 
@@ -105,7 +116,7 @@ let
     # ▌▌▐ ▌▌▙▖▌▌
     # ▚▘▟▖▙▘▙▖▙▌
 
-    video-app = "org.xfce.Parole.desktop";
+    video-app = "mpv.desktop";
 
     video-types = [
 
@@ -133,7 +144,6 @@ let
         "x-scheme-handler/chrome"
     ];
 
-
     mkAssoc = desktop: types: lib.listToAttrs (map (type: { name = type; value = [ desktop ]; }) types);
 in
 
@@ -148,8 +158,9 @@ in
             (mkAssoc code-app code-types)
             (mkAssoc folder-app folder-types)
             (mkAssoc image-app image-types)
+            (mkAssoc terminal-app terminal-types)
             (mkAssoc text-app text-types)
-            #(mkAssoc video-app video-types)
+            (mkAssoc video-app video-types)
             (mkAssoc web-app web-types)
         ];
 
@@ -159,8 +170,9 @@ in
             (mkAssoc code-app code-types)
             (mkAssoc folder-app folder-types)
             (mkAssoc image-app image-types)
+            (mkAssoc terminal-app terminal-types)
             (mkAssoc text-app text-types)
-            #(mkAssoc video-app video-types)
+            (mkAssoc video-app video-types)
             (mkAssoc web-app web-types)
         ];
     };

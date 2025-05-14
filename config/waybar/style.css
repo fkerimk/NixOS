@@ -29,16 +29,16 @@ window {
     border-radius: 50px;
     background: none;
     border: none;
-    transition: 0s;
+    transition: 0.1s;
 }
 
 #workspaces button.active {
 
-    color: #aff; }
+    color: #ffb2c9; }
 
 #workspaces button:hover {
 
-    color: #aff;
+    color: #ffb2c9;
     background: none;
     border: none;
 }
@@ -57,15 +57,15 @@ window {
 }
 
 /* Clock */
-#clock.1 {
+#clock.time {
 
     color: #fff;
     font-size: 25px;
 }
 
-#clock.2 {
+#clock.date {
 
-    padding: 0px 10px;
+    padding: 0px 5px;
 }
 
 
@@ -93,55 +93,28 @@ window {
     padding: 0px 5px;
 }
 
-#custom-weather.severe {
-    color: #eb937d;
-}
-
-#custom-weather.sunnyDay {
-    color: #c2ca76;
-}
-
-#custom-weather.clearNight {
-    color: #cad3f5;
-}
-
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight {
-    color: #c2ddda;
-}
-
-#custom-weather.rainyDay,
-#custom-weather.rainyNight {
-    color: #5aaca5;
-}
-
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight {
-    color: #d6e7e5;
-}
-
-#custom-weather.default {
-    color: #dbd9d8;
-}
-
 /* Memory */
 #memory { 
     
     color: #fff; 
-    padding: 0px 0px 0px 10px;
+    padding: 0px 5px;
 }
 
 /* CPU */
-#cpu { color: #fff; }
+#cpu { 
+    color: #fff;
+    padding: 0px 5px;
+}
 
-/* Sound */
-#wireplumber { color: #fff; }
+#pulseaudio {
+    color: #fff;
+    padding: 0px 5px;
+}
 
-/* Network */
 #network {
 
     color: #fff;
-    padding: 0px 15px;
+    padding: 0px 5px;
 }
 
 #network.disconnected { color: #faa; }
@@ -191,14 +164,10 @@ window {
 
 
 
-
-
-
 #battery,
 #disk,
 #temperature,
 #backlight,
-#pulseaudio,
 #custom-media,
 #mode,
 #idle_inhibitor,
@@ -227,7 +196,6 @@ window {
     padding: 3px 6px;  /* Adjusted padding */
 }
 
-#pulseaudio { color: #7d9bba; }
 #backlight { color: #8fbcbb; }
 
 #battery { color: #c0caf5; }

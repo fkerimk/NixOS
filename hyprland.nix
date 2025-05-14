@@ -23,8 +23,6 @@
             withUWSM = true;
             xwayland.enable = true;
         };
-
-        waybar.enable = true;
     };
 
     services = {
@@ -36,7 +34,6 @@
             desktopManager = {
 
                 xfce.enable = true;
-                
                 gnome.enable = false;
                 plasma5.enable = false;
             };
@@ -44,24 +41,13 @@
             windowManager.hypr.enable = true;
         };
 
-        pipewire = {
-
-            enable = true;
-
-            alsa = {
-
-                enable = true;
-                support32Bit = true;
-            };
-
-            pulse.enable = true;
-            jack.enable = true;
-        };
+        desktopManager.plasma6.enable = false;
     };
 
     # Packages
     environment.systemPackages = with pkgs; [
 
+        waybar               # Top bar
         hyprpolkitagent      # Polkit
         libnotify            # Notifications
         mako                 # Notifications
@@ -73,9 +59,27 @@
         hyprshot             # Screenshot
     ];
 
-    # Sound
-    security.rtkit.enable = true;
+    #environment.etc."xdg/autostart/polkit-kde-authentication-agent-1.desktop".text = ''
+    #    [Desktop Entry]
+    #    Hidden=true
+    #'';
 
-    # Disable KDE polkit
+    # Disable KDE shit
     systemd.user.services.polkit-kde-authentication-agent-1.enable = false;
+
+    nixpkgs.overlays = [
+        (final: prev: {
+            kdePackages = prev.kdePackages // {
+                polkit-kde-agent = prev.runCommand "dummy-polkit-kde-agent" { } ''
+                mkdir -p $out/bin
+                echo "#!/bin/sh" > $out/bin/polkit-kde-authentication-agent-1
+                chmod +x $out/bin/polkit-kde-authentication-agent-1
+                '';
+                kwallet = null;
+                kwalletmanager = null;
+            };
+        })
+    ];
+
+    #services.kdeWallet.enable = false;
 }
