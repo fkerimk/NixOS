@@ -8,6 +8,7 @@
         ./patches/vscode.nix
         ./patches/obs.nix
         ./patches/brave.nix
+        ./patches/steam.nix
         ./mime.nix
     ];
 

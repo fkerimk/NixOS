@@ -4,23 +4,21 @@
     inputs = {
 
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-        nixos-cachyos-kernel.url = "github:drakon64/nixos-cachyos-kernel";
+        chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     };
 
-    outputs = {
+    outputs = { self, nixpkgs, chaotic, ... } : {
 
-        self,
-        nixpkgs,
-        nixos-cachyos-kernel,
-    }:
-    {
-    nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          modules = [
-            /etc/nixos/configuration.nix
-            nixos-cachyos-kernel.nixosModules.default
-          ];
+        nixosConfigurations = {
+
+            nixos = nixpkgs.lib.nixosSystem {
+
+                modules = [
+                    
+                    /etc/nixos/configuration.nix
+                    chaotic.nixosModules.default
+                ];
+            };
         };
-      };
     };
 }
