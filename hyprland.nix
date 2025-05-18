@@ -53,8 +53,8 @@
         mako                 # Notifications
         mpvpaper             # Video wallpaper
         rofi-wayland         # Rofi
-        hyprcursor           # Cursor
-        rose-pine-hyprcursor # Cursor theme
+        #hyprcursor           # Cursor
+        #rose-pine-hyprcursor # Cursor theme
         hyprpicker           # Color picker
         hyprshot             # Screenshot
     ];

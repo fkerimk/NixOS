@@ -12,7 +12,6 @@
         killall
         p7zip
         unrar
-        mlt
         movit
         ffmpeg-full
         gst_all_1.gstreamer
@@ -36,14 +35,13 @@
         nv-codec-headers-9
         nv-codec-headers
         x264
-        uget
-        
         mono
         dotnet-sdk
-
-        #python313Packages.gtts
-        #python313Packages.isal
-        #python313Packages.zlib-ng
-        #python313Packages.aiohttp-fast-zlib
+        vaapiVdpau
+        libvdpau
+        libva
+        libvdpau-va-gl
+        libsForQt5.mlt
+        mlt
     ];
 }

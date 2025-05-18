@@ -42,6 +42,10 @@
         wineWowPackages.waylandFull
         minecraft
         mcpelauncher-ui-qt
+        uget
+        #libsForQt5.kdenlive
+        ferdium
+        kdePackages.kdenlive
     ];
 
     programs.kdeconnect.enable = true;

@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
-while getopts "hbrg" opt; do
+while getopts "hbrgn" opt; do
     case ${opt} in
         h)
             echo "-b : rebuild NixOS" 
+            echo "-n : NixOS only" 
             echo "-r : do not hide messages" 
             echo "-g : disk optimizations" 
             exit 1 ;;
         b) build=true ;;
         r) raw=true ;;
         g) diskopt=true ;;
+        n) nixOnly=true ;;
         \?) exit 1 ;;
         :) exit 1 ;;
     esac
@@ -21,33 +23,36 @@ echo "Reloading ..."
 
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 usr=$(eval echo "~$SUDO_USER")
-nixos="/etc/nixos"
-temp="$dir/temp"
+nix="/etc/nixos"
+tmp="$dir/temp"
 
-rmd () { [ -d "$1" ] && sudo rm -rf "$1"; }
-rmdUsr () { rmd "$usr$1"; }
-cpdUsr () { rmdUsr "$2"; sudo cp -r "$dir$1" "$usr$2"; } 
-cpfUsr () { sudo cp "$dir$1" "$usr$2"; } 
+if [[ -z "$nixOnly" ]]; then
 
-# Clone hyprland config
-cpdUsr "/config/hypr" "/.config/hypr"
-hyprctl reload > /dev/null 2>&1 &
+    # Clone hyprland config
+    [ -d "$usr/.config/hypr" ] && sudo rm -rf "$usr/.config/hypr";
+    sudo cp -r "$dir/config/hypr" "$usr/.config/hypr";
+    hyprctl reload > /dev/null 2>&1 &
 
-# Clone waybar config
-cpdUsr "/config/waybar" "/.config/waybar"
-sudo mv "$usr/.config/waybar/config.jsonc" "$usr/.config/waybar/config"
-killall .waybar-wrapped; nohup waybar 2>/dev/null &
+    # Clone waybar config
+    [ -d "$usr/.config/waybar" ] && sudo rm -rf "$usr/.config/waybar";
+    sudo cp -r "$dir/config/waybar" "$usr/.config/waybar";
+    sudo mv "$usr/.config/waybar/config.jsonc" "$usr/.config/waybar/config"
+    killall .waybar-wrapped; nohup waybar 2>/dev/null &
 
-# Clone bash config
-cpfUsr "/config/.bashrc" "/.bashrc"
-source $usr/.bashrc
+    # Clone bash config
+    sudo cp "$dir/config/.bashrc" "$usr/.bashrc";
+    source "$usr/.bashrc"
 
-# Clone alacritty config
-sudo mkdir -p "$usr/.config/alacritty"
-cpfUsr "/config/alacritty.toml" "/.config/alacritty/alacritty.toml"
+    # Clone alacritty config
+    sudo mkdir -p "$usr/.config/alacritty"
+    sudo cp "$dir/config/alacritty.toml" "$usr/.config/alacritty/alacritty.toml";
+
+fi
 
 # Clone flake
-cpdUsr "/flake" "/.flake"
+[ -d "$usr/.flake" ] && sudo rm -rf "$usr/.flake";
+sudo mkdir -p "$usr/.flake"
+sudo cp "$dir/flake.nix" "$usr/.flake/flake.nix";
 
 if [[ -n "$build" ]]; then
     
@@ -55,10 +60,10 @@ if [[ -n "$build" ]]; then
 
     if [[ -z "$raw" ]]; then 
     
-        sudo bash -c "nix-collect-garbage &>'$temp/nixos-clean.log'"; 
-        sudo bash -c "sudo nixos-rebuild switch --upgrade --flake "$usr/.flake" --impure &>'$temp/nixos-switch.log'"; 
+        sudo bash -c "nix-collect-garbage &>'$tmp/nixos-clean.log'"; 
+        sudo bash -c "sudo nixos-rebuild switch --upgrade --flake "$usr/.flake" --impure &>'$tmp/nixos-switch.log'"; 
 
-        if grep -q 'error:' "$temp/nixos-switch.log"; then
+        if grep -q 'error:' "$tmp/nixos-switch.log"; then
             awk '
             /error: / {
                 if (!(seen[$0]++)) {
@@ -69,7 +74,7 @@ if [[ -n "$build" ]]; then
                     block = 1
                 }
             }' \
-            "$temp/nixos-switch.log" \
+            "$tmp/nixos-switch.log" \
             | sed 's/^[ \t]*//;s/[ \t]*$//' \
             | sed -E \
                 -e 's/error:/\x1b[31m&\x1b[0m/g' \
@@ -86,7 +91,7 @@ fi
 
 # Disk optimizations
 if [[ -n "$diskopt" ]]; then
-    nh clean all --keep 1
+    sudo nh clean all --keep 1
     sudo nix-store --optimise
     sudo nix-collect-garbage -d
     sudo fstrim -a
