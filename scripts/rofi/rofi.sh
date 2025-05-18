@@ -46,7 +46,7 @@ case "$main_choice" in
                     filename=$(basename "$file")
                     filename="${filename%.*}"
                     echo "󰀼  $filename" >> "$options_file"
-                done < <(find "/run/media/fkerimk/Secondary M2/Unity/Assets" -maxdepth 1 -type f)
+                done < <(find "/mnt/secondary/Unity/Assets" -maxdepth 1 -type f)
 
                 assets_choice=$(rofi -dmenu -p "Assets" -i < "$options_file")
 

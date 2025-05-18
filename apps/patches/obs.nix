@@ -5,13 +5,16 @@
 
         enable = true;
 
-        package = pkgs.obs-studio;
+        package = pkgs.obs-studio.override {
+
+            ffmpeg = pkgs.ffmpeg-full;
+        };
 
         enableVirtualCamera = true;
 
-        plugins = with pkgs; [
+        plugins = with pkgs.obs-studio-plugins; [
 
-            obs-studio-plugins.obs-backgroundremoval
+            obs-backgroundremoval
         ];
     };
 

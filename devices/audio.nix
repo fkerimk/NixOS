@@ -1,27 +1,19 @@
 { config, pkgs, ... }:
 
 {
-#    services = {
-#
-#        pipewire = {
-#
-#            alsa = {
-#
-#                enable = true;
-#                support32Bit = true;
-#            };
-#
-#            pulse.enable = true;
-#        };
-#
-#        jack.alsa.support32Bit = true;
-#    };
-
-    services.pipewire.enable = false;
-
-    services.pulseaudio = {
+    services.pipewire = {
 
         enable = true;
+
+        jack.enable = true;
+        audio.enable = true;
+        pulse.enable = true;
+
+        alsa = {
+            
+            enable = true;
+            support32Bit = true;
+        };
     };
 
     security.rtkit.enable = true;

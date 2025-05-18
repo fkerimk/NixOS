@@ -7,32 +7,34 @@
 
         kernelParams = [
 
+            "nvidia-uvm.modeset=1"
             "nvidia-drm.modeset=1"
         ];
 
-        kernelModules = [
-
-            "nvidia"
-            
-            "nvidia-drm"
-            "nvidia-uvm"
-            "nvidia-modeset"
-
-            "nvidia_drm"
-            "nvidia_uvm"
-            "nvidia_modeset"
-        ];
+        kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
     };
 
     hardware = {
 
-        graphics.enable = true;
+        graphics = {
+
+            enable = true;
+            enable32Bit = true;
+
+            extraPackages = with pkgs; [
+                
+                vaapiVdpau
+                libvdpau
+                libva
+                nvidia-vaapi-driver
+            ];
+        };
 
         nvidia = {
 
             open = false;
 
-            #package = pkgs.linuxPackages_xanmod.nvidiaPackages.stable;
+            package = config.boot.kernelPackages.nvidiaPackages.beta;
             
             modesetting.enable = true;
             nvidiaSettings = true;
@@ -45,8 +47,4 @@
         };
     };
 
-    environment.systemPackages = with pkgs; [
-
-        libglvnd
-    ];
 }

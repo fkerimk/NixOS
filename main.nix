@@ -3,8 +3,12 @@
 {
     boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
+    services.displayManager.sddm.enable = true;
+
     imports = [
 
+        ./libs.nix
+        
         ./devices/nvidia.nix
         ./devices/audio.nix
         ./devices/wifi.nix
@@ -13,21 +17,13 @@
         ./hyprland.nix
 
         ./apps/apps.nix
-        ./dpi-bypass.nix
 
         ./fonts.nix
         
     ];
 
-    services.displayManager.sddm.enable = true;
-
     environment.systemPackages = with pkgs; [
-
-        killall
-        nwg-look
-        adwaita-qt
-        gtk4
-        gtk3
+        
         lolcat
         clolcat
         boxes
@@ -35,21 +31,18 @@
         numbat
         btop
         bemoji
-        wl-clipboard
-        wtype
-        fzf
-
         fastfetch
         sl
         ponysay
-
-        toilet
-
         asciiquarium-transparent
-        
         asciidoctor-with-extensions
-
+        libsForQt5.kdenlive
     ];
 
     programs.nh.enable = true;
+
+    users.users.furkan = {
+        
+        extraGroups = [ "wheel" "networkmanager" "video" ];
+    };
 }

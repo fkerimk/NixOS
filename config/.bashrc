@@ -8,9 +8,14 @@ reload () {
     $(eval echo "~$SUDO_USER")/NixOS/reload.sh "$@"
 }
 
-figlett (){
+figlett () {
 
     $(eval echo "~$SUDO_USER")/NixOS/scripts/figlett/figlett.sh "$@"
 }
+
+mt () {
+
+    $(eval echo "~$SUDO_USER")/NixOS/scripts/media-tools.sh "$@"
+} 
 
 #date +"%d.%m - %H:%M" | figlet | lolcat -f | boxes -d tux

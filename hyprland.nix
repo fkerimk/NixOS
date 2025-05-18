@@ -59,11 +59,6 @@
         hyprshot             # Screenshot
     ];
 
-    #environment.etc."xdg/autostart/polkit-kde-authentication-agent-1.desktop".text = ''
-    #    [Desktop Entry]
-    #    Hidden=true
-    #'';
-
     # Disable KDE shit
     systemd.user.services.polkit-kde-authentication-agent-1.enable = false;
 
@@ -80,6 +75,4 @@
             };
         })
     ];
-
-    #services.kdeWallet.enable = false;
 }

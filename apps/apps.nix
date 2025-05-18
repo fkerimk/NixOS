@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
+    nixpkgs.config.allowBroken = true;
+
     imports = [
 
         ./patches/brave.nix
@@ -9,6 +11,8 @@
         ./patches/obs.nix
         ./patches/brave.nix
         ./patches/steam.nix
+        ./patches/zapret.nix
+
         ./mime.nix
     ];
 
@@ -18,7 +22,6 @@
         ente-auth
         alacritty
         nemo-with-extensions
-        easyeffects
         qpwgraph
         unityhub
         jetbrains.rider
@@ -30,41 +33,19 @@
         textadept
         image-roll
         file-roller
-        p7zip
-        unrar
         nemo-fileroller
         gimp-with-plugins
         qdirstat
+        nwg-look
+        easyeffects
+        bottles-unwrapped
+        wineWowPackages.waylandFull
+        minecraft
+        mcpelauncher-ui-qt
     ];
 
     programs.kdeconnect.enable = true;
     programs.partition-manager.enable = true;
 
-    services.home-assistant = {
-
-        enable = true;
-
-        config = {
-
-            homeassistant = {
-
-                name = "Home";
-                #latitude = "!secret latitude";
-                #longitude = "!secret longitude";
-                #elevation = "!secret elevation";
-                unit_system = "metric";
-                time_zone = "GMT+3";
-
-            };
-
-            frontend = {
-
-                #themes = "!include_dir_merge_named themes";
-            };
-
-            http = {};
-
-            feedreader.urls = [ "https://nixos.org/blogs.xml" ];
-        };
-    };
+    programs.thunderbird.enable = true;
 }

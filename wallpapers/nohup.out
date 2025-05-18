@@ -1,0 +1,6 @@
+[2025-05-16 16:09:52.258] [info] Using configuration file /home/furkan/.config/waybar/config
+[2025-05-16 16:09:52.261] [info] Using CSS file /home/furkan/.config/waybar/style.css
+[2025-05-16 16:09:52.287] [info] Hyprland IPC starting
+[2025-05-16 16:09:52.288] [info] Loading persistent workspaces from Hyprland workspace rules
+[2025-05-16 16:09:52.448] [warning] Requested height: 20 is less than the minimum height: 39 required by the modules
+[2025-05-16 16:09:52.448] [info] Bar configured (width: 2560, height: 39) for output: DP-3

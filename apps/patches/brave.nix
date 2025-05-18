@@ -5,14 +5,13 @@ let
     brave-patched = pkgs.writeShellScriptBin "brave" ''
 
         exec ${pkgs.brave}/bin/brave \
+            --disable-gpu-compositing \
             --user-data-dir="/mnt/secondary/Data/brave" \
+            --enable-features=UseOzonePlatform \
+            --ozone-platform=wayland \
             "$@"
     '';
-
-    #--disable-gpu-compositing \
-    #--enable-features=UseOzonePlatform \
-    #--ozone-platform=wayland 
-
+    
     brave-patched-desktop = pkgs.makeDesktopItem {
 
         name = "brave-patched";

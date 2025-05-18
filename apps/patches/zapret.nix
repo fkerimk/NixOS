@@ -9,9 +9,6 @@
 
         params = [
 
-            #"--hostspell=hoSt"
-            #"--split-tls=sni"
-            #"--oob"
             "--dpi-desync=fake"
             "--dpi-desync-ttl=3"
         ];

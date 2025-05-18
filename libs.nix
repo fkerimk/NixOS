@@ -1,0 +1,49 @@
+{ config, lib, pkgs, ... }:
+
+{
+    environment.systemPackages = with pkgs; [
+
+        adwaita-qt
+        gtk4
+        gtk3
+        wl-clipboard
+        wtype
+        fzf
+        killall
+        p7zip
+        unrar
+        mlt
+        movit
+        ffmpeg-full
+        gst_all_1.gstreamer
+        gst_all_1.gst-plugins-base
+        gst_all_1.gst-plugins-good
+        gst_all_1.gst-plugins-bad
+        gst_all_1.gst-plugins-ugly
+        gst_all_1.gst-libav
+        libglvnd
+        cudaPackages.cudatoolkit
+        libGL
+        libGLU
+        nvidia-vaapi-driver
+        vdpauinfo
+        libva-utils
+        glxinfo
+        libnvidia-container
+        nv-codec-headers-12
+        nv-codec-headers-11
+        nv-codec-headers-10
+        nv-codec-headers-9
+        nv-codec-headers
+        x264
+        uget
+        
+        mono
+        dotnet-sdk
+
+        #python313Packages.gtts
+        #python313Packages.isal
+        #python313Packages.zlib-ng
+        #python313Packages.aiohttp-fast-zlib
+    ];
+}

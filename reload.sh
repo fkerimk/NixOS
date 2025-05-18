@@ -15,6 +15,10 @@ while getopts "hbrg" opt; do
     esac
 done
 
+if ! sudo -v; then exit 1; fi
+
+echo "Reloading ..."
+
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 usr=$(eval echo "~$SUDO_USER")
 nixos="/etc/nixos"
@@ -73,16 +77,8 @@ if [[ -n "$build" ]]; then
             | cat \
             | boxes -d tux
         else
-            echo "DONE!" | figlet | boxes -d parchment | clolcat
+            echo "DONE!" | figlet | boxes -d parchment | lolcat
             printf "\n";
-
-            keep=10
-
-            read -p "Clear old generations (keep $keep)? (y/n) [Y]: " choice
-            if [[ "$choice" != "n" && "$choice" != "N" ]]; then
-                sudo bash -c "nh clean all --keep $keep &> '$temp/nixos-clean.log'"
-                sudo bash -c "nix-collect-garbage &>> '$temp/nixos-clean.log'"
-            fi
         fi
 
     else sudo nixos-rebuild switch --upgrade --flake "$usr/.flake" --impure; fi
@@ -90,6 +86,8 @@ fi
 
 # Disk optimizations
 if [[ -n "$diskopt" ]]; then
+    nh clean all --keep 1
+    sudo nix-store --optimise
     sudo nix-collect-garbage -d
     sudo fstrim -a
 fi

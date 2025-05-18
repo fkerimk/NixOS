@@ -5,16 +5,16 @@ let
     vscode-patched = pkgs.writeShellScriptBin "code" ''
 
         exec ${pkgs.vscode}/bin/code \
-            --no-sandbox \
             --user-data-dir "/mnt/secondary/Data/vscode" \
+            --disable-gpu-sandbox \
+            --disable-gpu-compositing \
+            --enable-features=UseOzonePlatform \
+            --enable-features=WaylandWindowDecorations \
+            --ozone-platform=wayland \
             "$@"
     '';
 
-    #--disable-gpu-sandbox \
-    #--disable-gpu-compositing \
-    #--enable-features=UseOzonePlatform \
-    #--enable-features=WaylandWindowDecorations \
-    #--ozone-platform=wayland 
+    #--no-sandbox \
 
     vscode-patched-desktop = pkgs.makeDesktopItem {
 
