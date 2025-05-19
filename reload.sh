@@ -60,7 +60,6 @@ if [[ -n "$build" ]]; then
 
     if [[ -z "$raw" ]]; then 
     
-        sudo bash -c "nix-collect-garbage &>'$tmp/nixos-clean.log'"; 
         sudo bash -c "sudo nixos-rebuild switch --upgrade --flake "$usr/.flake" --impure &>'$tmp/nixos-switch.log'"; 
 
         if grep -q 'error:' "$tmp/nixos-switch.log"; then
@@ -91,8 +90,8 @@ fi
 
 # Disk optimizations
 if [[ -n "$diskopt" ]]; then
-    sudo nh clean all --keep 1
+    sudo nh clean all
     sudo nix-store --optimise
     sudo nix-collect-garbage -d
-    sudo fstrim -a
+    #sudo fstrim -a
 fi

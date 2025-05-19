@@ -4,6 +4,7 @@
     environment.systemPackages = with pkgs; [
 
         adwaita-qt
+        kdePackages.breeze
         gtk4
         gtk3
         wl-clipboard
@@ -43,5 +44,7 @@
         libvdpau-va-gl
         libsForQt5.mlt
         mlt
+        removeReferencesTo
+        gnused
     ];
 }

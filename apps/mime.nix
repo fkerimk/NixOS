@@ -129,7 +129,7 @@ let
     # ▌▞▖▌▙▖▙▘
     # ▛ ▝▌▙▖▙▘
 
-    web-app = "brave-patched.desktop";
+    web-app = "zen-patched.desktop";
 
     web-types = [
 

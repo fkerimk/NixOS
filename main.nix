@@ -17,18 +17,14 @@
     imports = [
 
         ./libs.nix
-        
         ./devices/nvidia.nix
         ./devices/audio.nix
         ./devices/wifi.nix
         ./devices/mount.nix
-
         ./hyprland.nix
-
         ./apps/apps.nix
-
         ./fonts.nix
-        
+        ./cleaner.nix
     ];
 
     environment.systemPackages = with pkgs; [
@@ -45,6 +41,8 @@
         ponysay
         asciiquarium-transparent
         asciidoctor-with-extensions
+
+        clipgrab
     ];
 
     programs.nh.enable = true;

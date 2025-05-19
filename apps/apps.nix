@@ -12,6 +12,7 @@
         ./patches/brave.nix
         ./patches/steam.nix
         ./patches/zapret.nix
+        ./patches/zen-browser.nix
 
         ./mime.nix
     ];
@@ -43,7 +44,6 @@
         minecraft
         mcpelauncher-ui-qt
         uget
-        #libsForQt5.kdenlive
         ferdium
         kdePackages.kdenlive
     ];

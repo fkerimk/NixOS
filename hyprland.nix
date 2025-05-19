@@ -53,26 +53,7 @@
         mako                 # Notifications
         mpvpaper             # Video wallpaper
         rofi-wayland         # Rofi
-        #hyprcursor           # Cursor
-        #rose-pine-hyprcursor # Cursor theme
         hyprpicker           # Color picker
         hyprshot             # Screenshot
-    ];
-
-    # Disable KDE shit
-    systemd.user.services.polkit-kde-authentication-agent-1.enable = false;
-
-    nixpkgs.overlays = [
-        (final: prev: {
-            kdePackages = prev.kdePackages // {
-                polkit-kde-agent = prev.runCommand "dummy-polkit-kde-agent" { } ''
-                mkdir -p $out/bin
-                echo "#!/bin/sh" > $out/bin/polkit-kde-authentication-agent-1
-                chmod +x $out/bin/polkit-kde-authentication-agent-1
-                '';
-                kwallet = null;
-                kwalletmanager = null;
-            };
-        })
     ];
 }
