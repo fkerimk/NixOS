@@ -30,29 +30,34 @@ if [[ -z "$nixOnly" ]]; then
 
     # Clone hyprland config
     [ -d "$usr/.config/hypr" ] && sudo rm -rf "$usr/.config/hypr";
-    sudo cp -r "$dir/config/hypr" "$usr/.config/hypr";
+    cp -r "$dir/config/hypr" "$usr/.config/hypr";
     hyprctl reload > /dev/null 2>&1 &
 
     # Clone waybar config
     [ -d "$usr/.config/waybar" ] && sudo rm -rf "$usr/.config/waybar";
-    sudo cp -r "$dir/config/waybar" "$usr/.config/waybar";
+    cp -r "$dir/config/waybar" "$usr/.config/waybar";
     sudo mv "$usr/.config/waybar/config.jsonc" "$usr/.config/waybar/config"
     killall .waybar-wrapped; nohup waybar 2>/dev/null &
 
     # Clone bash config
-    sudo cp "$dir/config/.bashrc" "$usr/.bashrc";
+    [ -f "$usr/.bashrc" ] && sudo rm -f "$usr/.bashrc";
+    cp "$dir/config/.bashrc" "$usr/.bashrc";
     source "$usr/.bashrc"
 
     # Clone alacritty config
-    sudo mkdir -p "$usr/.config/alacritty"
-    sudo cp "$dir/config/alacritty.toml" "$usr/.config/alacritty/alacritty.toml";
+    [ -d "$usr/.config/alacritty" ] && sudo rm -rf "$usr/.config/alacritty";
+    mkdir -p "$usr/.config/alacritty"
+    cp "$dir/config/alacritty.toml" "$usr/.config/alacritty/alacritty.toml";
 
+    # Clone nemo config
+    [ -d "$usr/.local/share/nemo/actions" ] && sudo rm -rf "$usr/.local/share/nemo/actions";
+    cp -r "$dir/config/nemo" "$usr/.local/share/nemo/actions"
 fi
 
 # Clone flake
 [ -d "$usr/.flake" ] && sudo rm -rf "$usr/.flake";
-sudo mkdir -p "$usr/.flake"
-sudo cp "$dir/flake.nix" "$usr/.flake/flake.nix";
+mkdir -p "$usr/.flake"
+cp "$dir/flake.nix" "$usr/.flake/flake.nix";
 
 if [[ -n "$build" ]]; then
     
@@ -80,8 +85,9 @@ if [[ -n "$build" ]]; then
                 -e 's/at /\x1b[34m&\x1b[0m/g' \
             | cat \
             | boxes -d tux
+            exit 1
         else
-            echo "DONE!" | figlet | boxes -d parchment | lolcat
+            figlet -f "/home/furkan/NixOS/scripts/figlett/fonts/Rozzo.flf" DONE | boxes -d parchment | lolcat
             printf "\n";
         fi
 

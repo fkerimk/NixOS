@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+    security.rtkit.enable = true;
+
     services.pipewire = {
 
         enable = true;
@@ -15,8 +17,6 @@
             support32Bit = true;
         };
     };
-
-    security.rtkit.enable = true;
 
     environment.systemPackages = [
 

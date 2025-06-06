@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+pushd $(pwd) > /dev/null
+
 while getopts "i:o:m:" opt; do
     case ${opt} in
         i) input="$OPTARG" ;;

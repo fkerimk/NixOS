@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-    nixpkgs.config.allowBroken = true;
-
     imports = [
 
+        ./libs.nix
+        
         ./patches/brave.nix
         ./patches/tor-browser.nix
         ./patches/vscode.nix
@@ -13,12 +13,13 @@
         ./patches/steam.nix
         ./patches/zapret.nix
         ./patches/zen-browser.nix
+        ./patches/openshot.nix
 
         ./mime.nix
     ];
 
     environment.systemPackages = with pkgs; [
-        
+
         bitwarden-desktop
         ente-auth
         alacritty
@@ -29,7 +30,6 @@
         lutris-unwrapped
         gnome-font-viewer
         mpv-unwrapped
-        davinci-resolve
         stash
         textadept
         image-roll
@@ -45,11 +45,13 @@
         mcpelauncher-ui-qt
         uget
         ferdium
-        kdePackages.kdenlive
+        audacity
     ];
+    
+    programs.localsend.enable = true;
 
-    programs.kdeconnect.enable = true;
-    programs.partition-manager.enable = true;
+    #programs.kdeconnect.enable = true;
+    #programs.partition-manager.enable = true;
 
     programs.thunderbird.enable = true;
 }

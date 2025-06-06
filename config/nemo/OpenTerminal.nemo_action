@@ -1,0 +1,7 @@
+[Nemo Action]
+Name=Open in Terminal
+Comment=Opens a terminal in this directory
+Exec=alacritty -e sh -c 'cd "%F"; exec $SHELL'
+Icon=utilities-terminal
+Selection=any
+Extensions=dir;

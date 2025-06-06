@@ -31,12 +31,17 @@
         "memory",
         "cpu",
         "pulseaudio",
+        "network",
         "tray"
     ],
 
-    "wlr/taskbar": {
-
-        "on-click": "activate"
+    "network": {
+        "interval": 30,
+        "format-wifi": "󰖩 {essid} ({signalStrength}%)", // Icon: wifi
+        "format-ethernet": " {ifname}", // Icon: ethernet
+        "format-disconnected": "󱚼 Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}",
+        "on-click": "swaymsg exec \\$term_float_portrait nmtui"
     },
 
 
@@ -88,7 +93,10 @@
         "format-muted": " {volume}%",
 
         "on-click": "pavucontrol",
-        "on-click-right": "amixer sset Master toggle"
+        "on-click-right": "amixer sset Master toggle",
+
+        "on-scroll-up": "amixer set Master 5%+",
+        "on-scroll-down": "amixer set Master 5%-"
     },
 
     "tray": {

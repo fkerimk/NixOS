@@ -1,10 +1,23 @@
 { config, lib, pkgs, ... }:
 
 {
+    nixpkgs.config.packageOverrides = super: {
+
+        nixpkgs.overlays = [
+
+            (final: prev: {
+
+                ffmpeg = prev.ffmpeg-full.override {
+                    withCuda = true;
+                };
+            })
+        ];
+    };
+
     environment.systemPackages = with pkgs; [
 
         adwaita-qt
-        kdePackages.breeze
+        libsForQt5.breeze-gtk
         gtk4
         gtk3
         wl-clipboard
@@ -14,7 +27,7 @@
         p7zip
         unrar
         movit
-        ffmpeg-full
+        ffmpeg
         gst_all_1.gstreamer
         gst_all_1.gst-plugins-base
         gst_all_1.gst-plugins-good
@@ -31,20 +44,32 @@
         glxinfo
         libnvidia-container
         nv-codec-headers-12
-        nv-codec-headers-11
-        nv-codec-headers-10
-        nv-codec-headers-9
-        nv-codec-headers
         x264
         mono
         dotnet-sdk
         vaapiVdpau
         libvdpau
         libva
-        libvdpau-va-gl
         libsForQt5.mlt
         mlt
         removeReferencesTo
         gnused
+        appimage-run
+        wget
+
+        lolcat
+        clolcat
+        boxes
+        figlet
+        numbat
+        btop
+        bemoji
+        fastfetch
+        sl
+        ponysay
+        asciiquarium-transparent
+        asciidoctor-with-extensions
+        mimeo
+        clipgrab
     ];
 }

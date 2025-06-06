@@ -34,6 +34,8 @@ output=$(figlet -f "$dir/fonts/$font.flf" "$message" | awk 'NF > 0')
 if [[ -n "$prefix" ]]; then output=$(echo "$output" | sed "s|^|$prefix |" ); fi
 
 echo "$output" | lolcat
+echo 
+echo figlet -f \"$dir/fonts/$font.flf\" "$message" | awk 'NF > 0'
 
 if [[ -n "$clipboard" ]]; then echo "$output" | wl-copy; fi
     

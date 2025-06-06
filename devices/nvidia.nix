@@ -27,11 +27,12 @@
 
             extraPackages = with pkgs; [
                 
-                vaapiVdpau
+                ffmpeg
                 libvdpau
                 libva
+                libva-utils
+                vaapiVdpau
                 nvidia-vaapi-driver
-                libvdpau-va-gl
             ];
         };
 
